@@ -1,6 +1,6 @@
  # Serverless Development Guide
 
- A hands-on, end-to-end guide to serverless development, taking you from fundamentals to production-ready architectures. Learn how to design, build, deploy, and scale serverless applications using real-world examples and best practices.
+A hands-on, end-to-end guide to serverless development, taking you from fundamentals to production-ready architectures. Learn how to design, build, deploy, and scale serverless applications using real-world examples and best practices.
 
  ## Overview
 
