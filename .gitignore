@@ -1,0 +1,25 @@
+ __pycache__/
+ *.py[cod]
+ *.pyo
+ .Python
+ env/
+ venv/
+ .venv/
+ build/
+ dist/
+ *.egg-info/
+ .pytest_cache/
+ .mypy_cache/
+ .coverage
+ .tox/
+ .nox/
+ .DS_Store
+ .vscode/
+ .idea/
+ .env
+ .env.*
+ .aws-sam/
+ .serverless/
+node_modules/
+.vscode/
+Serverless.code-workspace
