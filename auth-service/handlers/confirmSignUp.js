@@ -1,0 +1,53 @@
+// Import the required AWS Cognito SDK Classes
+// CognitoIdentityProviderClient: used to communicate with Cognito Identity Provider
+// SignUpCommand: used to sign up a new user
+const { CognitoIdentityProviderClient, ConfirmSignUpCommand } = require("@aws-sdk/client-cognito-identity-provider");
+
+// Communicate with Cognito Identity Provider
+const cognitoClient = new CognitoIdentityProviderClient({ region: "ap-southeast-2" });
+
+// Specify  the Cognito Client ID
+const clientId = "174ou5lhevo41e4bmaj3jmpqrr";
+
+exports.confirmSignUp = async (event) => {
+    // parse the request body to get the user signUp details
+    const { email, confirmationCode } = JSON.parse(event.body);
+
+    // create a signUp command with the user details
+    const confirmSignUpCommand = new ConfirmSignUpCommand({
+        ClientId: clientId,
+        Username: email,
+        ConfirmationCode: confirmationCode,
+    });
+
+    try {
+        // send the signUp command to Cognito Identity Provider
+        const response = await cognitoClient.send(confirmSignUpCommand);
+
+        // return the response to the client
+        return {
+            statusCode: 200,
+            body: JSON.stringify(
+                {
+                    message: "User confirmed sign up successfully",
+                    input: response,
+                },
+                null,
+                2
+            ),
+        };
+    } catch (error) {
+        // return the error to the client
+        return {
+            statusCode: 400,
+            body: JSON.stringify(
+                {
+                    message: "User confirmed sign up failed",
+                    input: error,
+                },
+                null,
+                2
+            ),
+        };
+    }
+}

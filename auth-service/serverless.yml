@@ -9,8 +9,14 @@ provider:
   region: ap-southeast-2
 
 functions:
+  confirmSignUp:
+    handler: handlers/confirmSignUp.confirmSignUp 
+    events:
+      - httpApi:
+          path: /confirm-sign-up
+          method: post
   signUp:
-    handler: handlers/signUp.signUp
+    handler: handlers/signUp.signUp 
     events:
       - httpApi:
           path: /sign-up
